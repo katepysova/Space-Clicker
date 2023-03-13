@@ -1,0 +1,26 @@
+// A flex item by default cannot be smaller than the size of its content
+// => add min-width: 0; to the flex item to enable text clipping.
+
+@import "./variables";
+@import "./functions";
+
+@mixin line-clip($lines-number, $is-flex-item: false) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines-number;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $is-flex-item {
+    min-width: 0;
+  }
+}
+
+@mixin paragraph($color: $color-black) {
+  font-family: $font-inter;
+  font-size: rem(16px);
+  font-weight: 400;
+  line-height: rem(32px);
+  letter-spacing: rem(0);
+  color: $color;
+}
