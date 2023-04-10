@@ -1,6 +1,6 @@
 {
   "extends": [
-    "stylelint-config-standard-scss",
+    "stylelint-config-recommended",
     "stylelint-prettier/recommended"
   ],
   "plugins": [
@@ -10,14 +10,12 @@
     "**/*.{js,json}"
   ],
   "rules": {
-    "max-nesting-depth": 5,
     "color-hex-case": "lower",
     "at-rule-empty-line-before": [
       "always",
       {
         "except": [
-          "blockless-after-same-name-blockless",
-          "first-nested"
+          "blockless-after-same-name-blockless"
         ],
         "ignore": [
           "after-comment"
