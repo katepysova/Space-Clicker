@@ -1,0 +1,32 @@
+.progress {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../images/progress-bg.jpeg");
+  position: relative;
+  height: 90vh;
+  padding: 24px;
+  border-radius: 32px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progress__content {
+  min-width: 600px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 60px 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.progress__message {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+}

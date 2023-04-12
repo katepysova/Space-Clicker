@@ -13,16 +13,23 @@
     />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/base.css" />
+
+    <link rel="stylesheet" href="css/utils.css" />
     <link rel="stylesheet" href="css/typography.css" />
-    <link rel="stylesheet" href="css/form.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="stylesheet" href="css/components/form.css" />
+    <link rel="stylesheet" href="css/components/btn.css" />
+
+    <link rel="stylesheet" href="css/layout/registration.css" />
+    <link rel="stylesheet" href="css/layout/game.css" />
+    <link rel="stylesheet" href="css/layout/progress.css" />
 
     <link rel="shortcut icon" type="image/png" href="images/favicon.webp" />
   </head>
 
   <body>
-    <div class="wrapper">
-      <section class="registration">
+    <main class="main">
+      <section class="registration u-hidden">
         <form class="registration__form form">
           <h3 class="heading">Create User</h3>
           <div class="form__field">
@@ -46,33 +53,40 @@
             <span class="form__field-error">Error</span>
           </div>
 
-          <button class="btn" type="submit">Create</button>
+          <button class="btn u-center" type="submit">Create</button>
         </form>
       </section>
-      <section class="game hidden">
-        <header class="header">
-          <ul class="header__list">
-            <li class="header__item">
+
+      <section class="game u-hidden">
+        <div class="game__info">
+          <ul class="game__list">
+            <li class="game__info-item">
               Username: <span class="username-caption">-</span>
             </li>
-            <li class="header__item">
+            <li class="game__info-item">
               Score: <span class="score-caption">0</span>
             </li>
-            <li class="header__item">
+            <li class="game__info-item">
               Points: <span class="points-caption">0</span>
             </li>
-            <li class="header__item">
+            <li class="game__info-item">
               Level: <span class="level-caption">1</span>
             </li>
           </ul>
-        </header>
-        <main class="main space">
-          <button type="button" class="rival">
-            <img class="rival__image" src="images/rival-1.png" />
-          </button>
-        </main>
+        </div>
+
+        <button type="button" class="game__rival">
+          <img class="game__rival-image" src="images/rival-1.png" />
+        </button>
       </section>
-    </div>
+      <section class="progress">
+        <div class="progress__content">
+          <h4 class="progress__title heading">Great job!</h4>
+          <div class="progress__message">Hello</div>
+          <button class="btn u-center">Click</button>
+        </div>
+      </section>
+    </main>
 
     <script src="./js/formValidation.js" type="module"></script>
     <script src="./js/script.js" type="module"></script>

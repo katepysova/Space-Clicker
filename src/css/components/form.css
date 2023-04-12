@@ -63,24 +63,3 @@
 .form__field.error .form__field-error {
   display: inline-block;
 }
-
-.btn {
-  display: block;
-  border: none;
-  align-self: center;
-  border-radius: 8px;
-  padding: 10px 36px;
-  margin-top: 18px;
-  background-color: var(--color-purple);
-  transition: all 0.2s;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  background-color: rgb(108, 2, 108);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  background-color: rgb(91, 3, 91);
-}
