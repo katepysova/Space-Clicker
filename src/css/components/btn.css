@@ -4,6 +4,7 @@
   border-radius: 8px;
   padding: 10px 36px;
   margin-top: 18px;
+  text-transform: capitalize;
   background-color: var(--color-purple);
   transition: all 0.2s;
 }

@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)),
-    url("../../images/reg-bg.jpeg");
+    url("../../images/themes/reg-bg.jpeg");
   padding: 24px;
   border-radius: 32px;
   display: flex;

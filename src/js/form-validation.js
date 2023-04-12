@@ -12,6 +12,9 @@ export const hideError = (input) => {
   error.textContent = "";
 };
 
+export const isBetween = (value, min, max) =>
+  !(value.length < min || value.length > max);
+
 export const checkEmail = (email, isRequired = true) => {
   const isEmailValid = (value) => {
     const re =
@@ -35,11 +38,21 @@ export const checkEmail = (email, isRequired = true) => {
   return isValid;
 };
 
-export const checkUserName = (userName, isRequired = true) => {
+export const checkUserName = (
+  userName,
+  isRequired = true,
+  min = 4,
+  max = 8
+) => {
   let isValid = false;
   const userNameValue = userName.value.trim() || "";
   if (isRequired && userNameValue.length === 0) {
     showError(userName, "User Name is a required field.");
+  } else if (!isBetween(userNameValue, min, max)) {
+    showError(
+      userName,
+      `Username must be between ${min} and ${max} characters.`
+    );
   } else {
     isValid = true;
     hideError(userName);

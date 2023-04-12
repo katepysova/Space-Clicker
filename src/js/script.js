@@ -1,5 +1,4 @@
-/* eslint-disable no-console */
-import { checkEmail, checkUserName } from "./formValidation.js";
+import { checkEmail, checkUserName } from "./form-validation.js";
 
 const usernameInput = document.querySelector("#username");
 const emailInput = document.querySelector("#email");
@@ -9,17 +8,17 @@ const registrationPage = document.querySelector(".registration");
 const gamePage = document.querySelector(".game");
 const progressPage = document.querySelector(".progress");
 
-const space = document.querySelector(".space");
-const rival = document.querySelector(".rival");
+const space = document.querySelector(".game__space");
+const rival = document.querySelector(".game__rival");
 
 const userNameCaption = document.querySelector(".username-caption");
 const userScoreCaption = document.querySelector(".score-caption");
 const userPointsCaption = document.querySelector(".points-caption");
 const userLevelCaption = document.querySelector(".level-caption");
 
-let totalScore = 0;
-let totalPoints = 0;
-let userLevel = 1;
+let TOTAL_SCORE = 0;
+let TOTAL_POINTS = 0;
+let USER_LEVEL = 1;
 const MAX_SCORE = 50;
 
 const levelTreshHolds = {
@@ -29,18 +28,17 @@ const levelTreshHolds = {
   35: 5,
 };
 
-const levelChange = (level) => {
-  gamePage.style.backgroundImage = `url(./images/bg-${level}.jpeg)`;
-  const monster = rival.querySelector(".rival__image");
-  monster.setAttribute("src", `./images/rival-${level}.png`);
-  userLevel += 1;
-  userLevelCaption.innerHTML = userLevel;
+const changeLevel = (level) => {
+  gamePage.style.backgroundImage = `url(src/images/themes/bg-${level}.jpeg)`;
+  const monster = rival.querySelector(".game__rival-image");
+  monster.setAttribute("src", `src/images/rivals/rival-${level}.png`);
+  USER_LEVEL += 1;
+  userLevelCaption.innerHTML = USER_LEVEL;
 };
 
-const showProgress = (level) => {
-  gamePage.classList.add("u-hidden");
-  progressPage.classList.remove("u-hidden");
-  console.log(level);
+const navigate = (currentPage, nextPage) => {
+  currentPage.classList.add("u-hidden");
+  nextPage.classList.remove("u-hidden");
 };
 
 registrationForm.addEventListener("submit", (event) => {
@@ -52,27 +50,74 @@ registrationForm.addEventListener("submit", (event) => {
   const isFormValid = isUserNameValid && isEmailValid;
   if (isFormValid) {
     userNameCaption.innerText = usernameInput.value || "";
-    registrationPage.classList.add("u-hidden");
-    gamePage.classList.remove("u-hidden");
+    usernameInput.value = "";
+    emailInput.value = "";
+    navigate(registrationPage, gamePage);
   }
 });
 
+const reset = () => {
+  TOTAL_SCORE = 0;
+  TOTAL_POINTS = 0;
+  USER_LEVEL = 1;
+
+  userPointsCaption.innerText = TOTAL_POINTS;
+  userScoreCaption.innerText = TOTAL_SCORE;
+  userLevelCaption.innerHTML = USER_LEVEL;
+
+  gamePage.style.backgroundImage = `url(src/images/themes/bg-1.jpeg)`;
+  const monster = rival.querySelector(".game__rival-image");
+  monster.setAttribute("src", `src/images/rivals/rival-1.png`);
+};
+
+const showProgress = (nextLevel) => {
+  navigate(gamePage, progressPage);
+
+  const previousLevel = nextLevel - 1;
+
+  progressPage.querySelector(
+    ".progress__message"
+  ).innerText = `Level ${previousLevel} Successfully Passed!`;
+  progressPage.style.backgroundImage = `url(src/images/themes/progress-bg.jpeg)`;
+  const progressBtn = progressPage.querySelector(".progress__btn");
+  progressBtn.innerText = "Next Level";
+
+  progressBtn.onclick = () => {
+    navigate(progressPage, gamePage);
+    changeLevel(nextLevel);
+  };
+};
+
+const showResult = () => {
+  navigate(gamePage, progressPage);
+  progressPage.querySelector(
+    ".progress__message"
+  ).innerHTML = `<p>All space monsters have been successfully defeated!!</p>
+    <p>Your total score is ${TOTAL_SCORE}!</p>`;
+  progressPage.style.backgroundImage = `url(src/images/themes/win-bg.jpeg)`;
+  const progressBtn = progressPage.querySelector(".progress__btn");
+  progressBtn.innerText = "Play Again";
+
+  progressBtn.onclick = () => {
+    reset();
+    navigate(progressPage, registrationPage);
+  };
+};
+
 space.addEventListener("click", () => {
-  totalPoints += 1;
-  userPointsCaption.innerText = totalPoints;
+  TOTAL_POINTS += 1;
+  userPointsCaption.innerText = TOTAL_POINTS;
 });
 
 rival.addEventListener("click", (event) => {
   event.stopPropagation();
-  totalScore += 1;
-  userScoreCaption.innerText = totalScore;
+  TOTAL_SCORE += 1;
+  userScoreCaption.innerText = TOTAL_SCORE;
 
-  if (levelTreshHolds[totalScore]) {
-    showProgress(levelTreshHolds[totalScore]);
-    levelChange(levelTreshHolds[totalScore]);
-
-    // eslint-disable-next-line no-empty
-  } else if (totalScore === MAX_SCORE) {
-    console.log("winner");
+  const nextLevel = levelTreshHolds[TOTAL_SCORE];
+  if (nextLevel) {
+    showProgress(nextLevel);
+  } else if (TOTAL_SCORE === MAX_SCORE) {
+    showResult();
   }
 });

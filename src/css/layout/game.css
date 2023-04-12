@@ -2,10 +2,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../../images/bg-1.jpeg");
+  background-image: url("../../images/themes/bg-1.jpeg");
   position: relative;
   height: 90vh;
-  padding: 24px;
   border-radius: 32px;
   overflow: hidden;
 }
@@ -36,6 +35,11 @@
   font-size: 24px;
   line-height: 36px;
   font-weight: 300;
+}
+
+.game__space {
+  height: 100%;
+  position: relative;
 }
 
 .game__rival {
