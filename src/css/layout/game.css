@@ -43,6 +43,14 @@
 }
 
 .game__rival {
+  offset-path: path("M226,12 l-3,257");
+  offset-rotate: 0deg; 
+  animation-name: move;
+  animation-duration: 5s;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+  animation-iteration-count:infinite;
+  animation-delay: 0ms;
   border: none;
   position: absolute;
   display: inline-block;
@@ -52,10 +60,20 @@
   left: 40%;
 }
 
+
 .game__rival .game__rival-image {
   position: absolute;
   top: 0;
   left: 0;
   object-fit: contain;
   height: 100%;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
 }
