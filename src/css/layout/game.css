@@ -7,6 +7,7 @@
   height: 90vh;
   border-radius: 32px;
   overflow: hidden;
+  animation: var(--animation-fade-in);
 }
 
 .game__info {
@@ -58,6 +59,7 @@
   padding-bottom: 300px;
   bottom: 10%;
   left: 40%;
+  cursor: url("../../images/cursors/kunai.svg"), auto;
 }
 
 .game__rival .game__rival-image {

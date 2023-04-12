@@ -8,6 +8,7 @@
   --color-transparent: transparent;
 
   --header-height: 64px;
+  --animation-fade-in: 0.5s ease-in-out fadeInAnimation;
 }
 
 html,
@@ -22,6 +23,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: var(--color-blue);
   color: var(--color-white);
+  cursor: url("../images/cursors/cursor.svg"), auto;
 }
 
 .main {

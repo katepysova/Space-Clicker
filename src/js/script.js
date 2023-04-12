@@ -21,46 +21,49 @@ let TOTAL_POINTS = 0;
 let USER_LEVEL = 1;
 const MAX_SCORE = 50;
 
-const levelTreshHolds = {
-  0: {
-    level: 1,
+const LEVEL_TRESH_HOLDS = {
+  0: 1,
+  5: 2,
+  15: 3,
+  30: 4,
+  40: 5,
+};
+
+const LEVEL_DATA = {
+  1: {
     animationDuration: "4s",
     offsetPath: `path("M226, 12 l-3,257")`,
   },
-  5: {
-    level: 2,
+  2: {
     animationDuration: "3s",
     offsetPath: `path("M50, 50 L100, 50 L100, 100 Z")`,
   },
-  10: {
-    level: 3,
-    animationDuration: "1s",
+  3: {
+    animationDuration: "2s",
     offsetPath: `path("M50, 50 C75, 80 125, 20 150, 50")`,
   },
-  20: {
-    level: 4,
-    animationDuration: "0.5s",
+  4: {
+    animationDuration: "1s",
     offsetPath: `path("M100, 100
     L150,100
     a50,25 0 0,0 150,100
     q50,-50 70,-170
     Z")`,
   },
-  35: {
-    level: 5,
-    animationDuration: "1s",
+  5: {
+    animationDuration: "0.7s",
     offsetPath: `path("M10, 10 l100,0  0,50  -100,0  0,-50")`,
   },
 };
 
 const changeLevel = (level) => {
-  gamePage.style.backgroundImage = `url(src/images/themes/bg-${level.level}.jpeg)`;
+  gamePage.style.backgroundImage = `url(src/images/themes/bg-${level}.jpeg)`;
   rival
     .querySelector(".game__rival-image")
-    .setAttribute("src", `src/images/rivals/rival-${level.level}.png`);
+    .setAttribute("src", `src/images/rivals/rival-${level}.png`);
 
-  rival.style.animationDuration = level.animationDuration;
-  rival.style.offsetPath = level.offsetPath;
+  rival.style.animationDuration = LEVEL_DATA[level].animationDuration;
+  rival.style.offsetPath = LEVEL_DATA[level].offsetPath;
   USER_LEVEL += 1;
   userLevelCaption.innerHTML = USER_LEVEL;
 };
@@ -99,15 +102,14 @@ const reset = () => {
   rival
     .querySelector(".game__rival-image")
     .setAttribute("src", `src/images/rivals/rival-${USER_LEVEL}.png`);
-  rival.style.animationDuration =
-    levelTreshHolds[TOTAL_SCORE].animationDuration;
-  rival.style.offsetPath = levelTreshHolds[TOTAL_SCORE].offsetPath;
+  rival.style.animationDuration = LEVEL_DATA[USER_LEVEL].animationDuration;
+  rival.style.offsetPath = LEVEL_DATA[USER_LEVEL].offsetPath;
 };
 
 const showProgress = (nextLevel) => {
   navigate(gamePage, progressPage);
 
-  const previousLevel = nextLevel.level - 1;
+  const previousLevel = nextLevel - 1;
 
   progressPage.querySelector(
     ".progress__message"
@@ -148,7 +150,7 @@ rival.addEventListener("click", (event) => {
   TOTAL_SCORE += 1;
   userScoreCaption.innerText = TOTAL_SCORE;
 
-  const nextLevel = levelTreshHolds[TOTAL_SCORE];
+  const nextLevel = LEVEL_TRESH_HOLDS[TOTAL_SCORE];
   if (nextLevel) {
     showProgress(nextLevel);
   } else if (TOTAL_SCORE === MAX_SCORE) {

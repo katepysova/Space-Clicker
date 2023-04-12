@@ -15,10 +15,11 @@ img {
 a:link,
 a:visited {
   text-decoration: none;
+  cursor: url("../images/cursors/pointer.svg"), auto;
 }
 
 button {
-  cursor: pointer;
+  cursor: url("../images/cursors/pointer.svg"), auto;
 }
 
 ul {

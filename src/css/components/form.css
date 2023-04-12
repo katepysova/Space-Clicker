@@ -23,6 +23,7 @@
   padding: 8px 12px;
   width: 100%;
   color: var(--color-black);
+  cursor: url("../../images/cursors/text.svg"), auto;
 }
 
 .form__input:focus {
@@ -36,6 +37,7 @@
   left: 12px;
   color: var(--color-grey);
   transition: all 0.2s;
+  cursor: url("../../images/cursors/text.svg"), auto;
 }
 
 .form__input::placeholder {
