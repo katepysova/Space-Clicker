@@ -1,7 +1,7 @@
 {
-  "name": "gulp-2022",
+  "name": "alien-clicker",
   "version": "1.0.0",
-  "description": "clicker",
+  "description": "clicker game",
   "type": "module",
   "scripts": {
     "dev": "http-server -o index.html",
