@@ -4,6 +4,7 @@
   "description": "clicker",
   "type": "module",
   "scripts": {
+    "dev": "http-server -o index.html",
     "lint:fix": "eslint --ext .js --fix .",
     "stylelint:fix": "stylelint --fix **/*.css",
     "prettier:fix": "prettier --write **/*.html",
