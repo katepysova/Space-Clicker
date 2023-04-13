@@ -9,11 +9,13 @@ Just a usual clicker game, where you have fun killing space monsters.
 
    `git clone git@github.com:katepysova/Space-Clicker.git`
 
-2. `npm install`
+2. Change your current directory to this project directory.
 
-3. `npm run prepare` - to install git pre-commit hook. Does not work not in a git repository.
+3. `npm install`
 
-4. `git add .husky/pre-commit` - to add git pre-commit hook.
+4. `npm run prepare` - to install git pre-commit hook. Does not work not in a git repository.
+
+5. `git add .husky/pre-commit` - to add git pre-commit hook.
 
 ## How to run
 
